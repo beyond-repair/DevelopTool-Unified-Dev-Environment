@@ -1,0 +1,30 @@
+import subprocess
+import os
+
+class VersionControlAgent:
+    def __init__(self, repository_path):
+        self.repository_path = repository_path
+
+    def initialize_repository(self):
+        subprocess.run(['git', 'init'], cwd=self.repository_path)
+
+    def commit_changes(self, message):
+        subprocess.run(['git', 'add', '.'], cwd=self.repository_path)
+        subprocess.run(['git', 'commit', '-m', message], cwd=self.repository_path)
+
+    def create_branch(self, branch_name):
+        subprocess.run(['git', 'branch', branch_name], cwd=self.repository_path)
+
+    def switch_branch(self, branch_name):
+        subprocess.run(['git', 'checkout', branch_name], cwd=self.repository_path)
+
+# Example Usage:
+repo_path = "/path/to/your/repository"
+version_control_agent = VersionControlAgent(repo_path)
+
+version_control_agent.initialize_repository()
+version_control_agent.commit_changes("Initial commit")
+
+version_control_agent.create_branch("feature_branch")
+version_control_agent.switch_branch("feature_branch")
+version_control_agent.commit_changes("Implement new feature")
