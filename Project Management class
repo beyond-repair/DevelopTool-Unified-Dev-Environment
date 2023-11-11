@@ -1,0 +1,31 @@
+import requests
+
+class ProjectManagement:
+    def __init__(self, repo_owner, repo_name, token):
+        self.repo_owner = repo_owner
+        self.repo_name = repo_name
+        self.base_url = f"https://api.github.com/repos/{self.repo_owner}/{self.repo_name}/issues"
+        self.headers = {"Authorization": f"Bearer {token}"}
+
+    def create_issue(self, title, body, assignees=None, milestone=None):
+        data = {"title": title, "body": body, "assignees": assignees, "milestone": milestone}
+        response = requests.post(self.base_url, json=data, headers=self.headers)
+
+        if response.status_code == 201:
+            print("Issue created successfully.")
+        else:
+            print(f"Failed to create issue. Status code: {response.status_code}")
+
+# Example Usage:
+github_repo_owner = "your_username"
+github_repo_name = "your_repository"
+github_token = "your_github_token"
+
+project_management = ProjectManagement(github_repo_owner, github_repo_name, github_token)
+
+issue_title = "Example Task"
+issue_body = "This is a sample task description."
+assignees = ["username1", "username2"]  # Optional
+milestone = 1  # Optional
+
+project_management.create_issue(issue_title, issue_body, assignees, milestone)
