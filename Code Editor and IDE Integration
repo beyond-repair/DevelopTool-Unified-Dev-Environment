@@ -1,0 +1,22 @@
+import os
+import subprocess
+
+class CodeEditorIntegration:
+    def __init__(self, file_path):
+        self.file_path = file_path
+
+    def open_in_vscode(self):
+        if os.path.isfile(self.file_path):
+            try:
+                # Assuming 'code' is the command to open a file in Visual Studio Code.
+                subprocess.run(['code', self.file_path], check=True)
+            except subprocess.CalledProcessError as e:
+                print(f"Error opening file in Visual Studio Code: {e}")
+        else:
+            print(f"The file {self.file_path} does not exist.")
+
+# Example Usage:
+file_to_edit = "example.py"
+
+code_editor_integration = CodeEditorIntegration(file_to_edit)
+code_editor_integration.open_in_vscode()
