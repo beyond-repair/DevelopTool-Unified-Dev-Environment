@@ -6,21 +6,24 @@ from agents.testing_agent import TestingAgent
 from agents.communication_agent import CommunicationAgent
 
 class DevelopTool:
-    def __init__(self):
+    def __init__(self, repo_path, github_details):
         # Initialize agents
-        self.version_control_agent = VersionControlAgent("/path/to/your/repository")
+        self.version_control_agent = VersionControlAgent(repo_path)
         self.ide_agent = IDEAgent()
         self.project_management_agent = ProjectManagementAgent(
-            repo_owner="your_username",
-            repo_name="your_repository",
-            token="your_github_token"
+            repo_owner=github_details['repo_owner'],
+            repo_name=github_details['repo_name'],
+            token=github_details['token']
         )
         self.ci_cd_agent = CI_CD_Agent()
         self.testing_agent = TestingAgent()
         self.communication_agent = CommunicationAgent()
 
         # Set context and mission
-        self.context = {...}
+        self.context = {
+            'repo_path': repo_path,
+            'github_details': github_details
+        }
         self.mission = "Streamline the software development process."
 
     def execute_mission(self):
@@ -33,6 +36,14 @@ class DevelopTool:
         self.communication_agent.send_message("Hello, team!")
 
 if __name__ == "__main__":
+    # Provide actual values for repository path and GitHub details
+    repo_path = "/path/to/your/repository"
+    github_details = {
+        'repo_owner': "your_username",
+        'repo_name': "your_repository",
+        'token': "your_github_token"
+    }
+
     # Create DevelopTool instance and execute the mission
-    develop_tool = DevelopTool()
+    develop_tool = DevelopTool(repo_path, github_details)
     develop_tool.execute_mission()
