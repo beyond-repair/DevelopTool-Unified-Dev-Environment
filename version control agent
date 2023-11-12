@@ -1,5 +1,5 @@
+# develop_tool/agents/version_control_agent.py
 import subprocess
-import os
 
 class VersionControlAgent:
     def __init__(self, repository_path):
@@ -17,20 +17,3 @@ class VersionControlAgent:
 
     def switch_branch(self, branch_name):
         subprocess.run(['git', 'checkout', branch_name], cwd=self.repository_path)
-
-# Example Usage:
-repo_path = "/path/to/your/repository"
-version_control_agent = VersionControlAgent(repo_path)
-
-# Initialize repository
-version_control_agent.initialize_repository()
-
-# Commit changes to the default branch
-version_control_agent.commit_changes("Initial commit")
-
-# Create a new branch and switch to it
-version_control_agent.create_branch("feature_branch")
-version_control_agent.switch_branch("feature_branch")
-
-# Commit changes to the feature branch
-version_control_agent.commit_changes("Implement new feature")
