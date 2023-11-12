@@ -10,9 +10,9 @@ class ProjectManagementAgent:
     def create_issue(self, title, body):
         url = f"{self.base_url}/issues"
         data = {"title": title, "body": body}
-        response = requests.post(url, json=data, headers=self.headers)
-
-        if response.status_code == 201:
+        try:
+            response = requests.post(url, json=data, headers=self.headers)
+            response.raise_for_status()
             print("Issue created successfully.")
-        else:
-            print(f"Failed to create issue. Status code: {response.status_code}")
+        except requests.exceptions.RequestException as e:
+            print(f"Failed to create issue: {e}")
