@@ -1,4 +1,3 @@
-# develop_tool/agents/version_control_agent.
 import subprocess
 
 class VersionControlAgent:
