@@ -8,7 +8,7 @@ class VersionControlAgent:
         try:
             subprocess.run(['git', 'init'], cwd=self.repository_path, check=True)
         except subprocess.CalledProcessError as e:
-            print(f"Error initializing repository: {e}")
+            print(f'Error initializing repository: Failed to initialize repository at {self.repository_path}. Error: {e}')
 
     def commit_changes(self, message):
         try:
