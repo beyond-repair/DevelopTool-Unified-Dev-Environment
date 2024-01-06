@@ -35,7 +35,7 @@ jobs:
         run: pytest
 
       - name: Code coverage
-        run: coverage report
+        run: conda env update --file DevelopTool-Unified-Dev-Environment/environment.yml --name base
 
       - name: Lint code
         run: pylint develop_tool
