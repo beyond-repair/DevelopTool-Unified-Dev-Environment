@@ -1,8 +1,8 @@
 import subprocess
-from file_manager import FileManager
+import file_manager
 
 class VersionControlAgent:
-    def __init__(self, repository_path):
+    def __init__(self, repository_path, file_manager):
         self.repository_path = repository_path
 
     def initialize_repository(self):
@@ -10,6 +10,10 @@ class VersionControlAgent:
             subprocess.run(['git', 'init'], cwd=self.repository_path, check=True)
         except subprocess.CalledProcessError as e:
             print(f"Error initializing repository: {e}")
+
+    def copy_file_to_directory(self, file_manager):
+        file_manager_instance = file_manager.FileManager()
+        file_manager_instance.copy_file(self.environment_path, self.repository_path)
 
     def commit_changes(self, message):
         try:
