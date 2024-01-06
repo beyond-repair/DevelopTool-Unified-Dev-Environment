@@ -1,0 +1,50 @@
+name: Setup
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Set up environment
+        uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+
+      - name: Cache dependencies
+        uses: actions/cache@v2
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+      - name: Locate environment.yml
+        uses: actions/github-script@v3
+        with:
+          script: |
+            const path = require('path');
+            const fs = require('fs');
+            - name: Install dependencies
+        run: |
+          conda env update --file DevelopTool-Unified-Dev-Environment/environment.yml --name base
+      - name: Run tests
+        run: pytest
+      - name: Code coverage
+        run: coverage run -m pytest
+        env:
+          CI: true
+      - name: Lint code
+        run: pylint DevelopTool-Unified-Dev-Environment
+      - name: Publish coverage report
+        uses: codecov/codecov-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+      - name: Check out repository again
+        uses: actions/checkout@v2
+      - name: Copy environment.yml to root directory
+        run: |
+          cp ${{ steps.locate_environment_yml.outputs.environment_yml_path }} environment.yml
