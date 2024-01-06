@@ -1,6 +1,6 @@
 class CI_CD_Agent:
     def setup_ci_cd_pipeline(self, file_manager):
-        import file_manager
+        from . import file_manager
 
         file_manager_instance = file_manager.FileManager()
         import sys
