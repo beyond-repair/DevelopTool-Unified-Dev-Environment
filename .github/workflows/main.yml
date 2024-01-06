@@ -28,7 +28,7 @@ jobs:
       - name: Set up Conda environment
         uses: conda-incubator/setup-miniconda@v2
         with:
-          activate-environment: base
+          activate-environment: develop_tool_env
           environment-file: DevelopTool-Unified-Dev-Environment/DevelopTool-Unified-Dev-Environment/environment.yml
 
       - name: Run tests
