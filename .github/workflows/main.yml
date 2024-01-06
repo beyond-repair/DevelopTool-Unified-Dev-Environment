@@ -35,7 +35,7 @@ jobs:
         run: pytest
 
             - name: Code coverage
-        run: conda env update --file environment.yml --name base
+        run: conda env update --file DevelopTool-Unified-Dev-Environment/environment.yml --name base
         run: conda env update --file DevelopTool-Unified-Dev-Environment/environment.yml --name base
 
       - name: Lint code
