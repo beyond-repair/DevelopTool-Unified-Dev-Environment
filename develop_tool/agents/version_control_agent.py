@@ -29,3 +29,7 @@ class VersionControlAgent:
             subprocess.run(['git', 'checkout', branch_name], cwd=self.repository_path, check=True)
         except subprocess.CalledProcessError as e:
             print(f"Error switching branch: {e}")
+    def get_environment_file_path(self):
+        return os.path.join(os.getcwd(), 'DevelopTool-Unified-Dev-Environment/DevelopTool-Unified-Dev-Environment/environment.yml')
+    def get_environment_file_path(self):
+        return os.path.join(os.getcwd(), 'DevelopTool-Unified-Dev-Environment/DevelopTool-Unified-Dev-Environment/environment.yml')
