@@ -3,13 +3,22 @@
 name: base
 channels:
   - defaults
+  - python=3.8
+  - DevelopTool-Unified-Dev-Environment/
+  - pandas
+  - DevelopTool-Unified-Dev-Environment/
+  - DevelopTool-Unified-Dev-Environment/
+  - DevelopTool-Unified-Dev-Environment/
+channels:
+  - defaults
+name: base
 dependencies:
   - python=3.8
-  - numpy
+  - DevelopTool-Unified-Dev-Environment/
   - pandas
-  - matplotlib
-  - scikit-learn
-  - pytest
-  - coverage
-  - pylint
-  - black
+  - DevelopTool-Unified-Dev-Environment/
+  - DevelopTool-Unified-Dev-Environment/
+  - DevelopTool-Unified-Dev-Environment/
+  - DevelopTool-Unified-Dev-Environment/
+  - DevelopTool-Unified-Dev-Environment/
+  - DevelopTool-Unified-Dev-Environment/
