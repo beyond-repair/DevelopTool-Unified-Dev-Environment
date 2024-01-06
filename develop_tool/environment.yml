@@ -1,0 +1,7 @@
+import shutil
+
+def create_new_environment_file():
+    source_file_path = "../environment.yml"
+    destination_file_path = "develop_tool/environment.yml"
+    
+    shutil.copyfile(source_file_path, destination_file_path)
