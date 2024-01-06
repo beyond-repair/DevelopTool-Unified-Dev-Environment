@@ -1,0 +1,37 @@
+name: Setup
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Set up environment
+        uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+      - name: Cache dependencies
+        uses: actions/cache@v2
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+      - name: Locate environment.yml
+        uses: actions/github-script@v3
+        with:
+          script: |
+            const path = require('path');
+            const fs = require('fs');
+            const environmentYmlPath = path.join(process.env.GITHUB_WORKSPACE, 'DevelopTool-Unified-Dev-Environment', 'environment.yml');
+            console.log(`::set-output name=environment_yml_path::${environmentYmlPath}`);
+      - name: Check out repository again
+        uses: actions/checkout@v2
+      - name: Copy environment.yml to root directory
+        run: |
+          cp ${{ steps.locate_environment_yml.outputs.environment_yml_path }} environment.yml
