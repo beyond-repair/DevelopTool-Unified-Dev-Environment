@@ -6,26 +6,25 @@ on:
       - main
 
 jobs:
-  update_environment:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Set up Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: 3.8
+      - name: Install Conda
+        run: |
+          wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh
+          bash miniconda.sh -b -p $HOME/miniconda
+          echo 'export PATH="$HOME/miniconda/bin:$PATH"' >> $HOME/.bashrc
+          source $HOME/.bashrc
+          conda config --set always_yes yes --set changeps1 no
+          conda update -q conda
 
-      - name: Install Miniconda
-        uses: conda-inc/setup-miniconda@v2
-
-      - name: Update Conda Environment
-        uses: conda-inc/conda-env-update@v1
-        with:
-          environment-file: DevelopTool-Unified-Dev-Environment/environment.yml
-          environment-name: base
+      - name: Create Conda environment
+        run: |
+          conda env create --file DevelopTool-Unified-Dev-Environment/environment.yml --name base
 
       - name: Commit and Push Environment File
         run: |
@@ -33,4 +32,4 @@ jobs:
           git config --global user.email "actions@github.com"
           git add DevelopTool-Unified-Dev-Environment/environment.yml
           git commit -m "Update conda environment"
-          git push
+          conda env remove --name base
