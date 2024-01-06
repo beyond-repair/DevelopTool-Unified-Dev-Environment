@@ -1,7 +1,7 @@
 import os
 
 # Change the working directory to the repository root directory
-os.chdir('/path/to/your/actual_repository')
+os.chdir('/path/to/your/actual_repository/DevelopTool-Unified-Dev-Environment')
 from agents.version_control_agent import VersionControlAgent
 from agents.ide_agent import IDEAgent
 from agents.project_management_agent import ProjectManagementAgent
