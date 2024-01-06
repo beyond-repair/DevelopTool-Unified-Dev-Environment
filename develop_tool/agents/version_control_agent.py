@@ -1,4 +1,5 @@
 import subprocess
+from file_manager import FileManager
 
 class VersionControlAgent:
     def __init__(self, repository_path):
