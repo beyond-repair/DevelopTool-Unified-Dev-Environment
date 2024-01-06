@@ -41,7 +41,7 @@ class DevelopTool:
 
 if __name__ == "__main__":
     # Provide actual values for repository path and GitHub details
-    repo_path = "/path/to/your/actual_repository"
+    repo_path = "DevelopTool-Unified-Dev-Environment/environment.yml"
     github_details = {
         'repo_owner': "your_username",
         'repo_name': "your_repository",
