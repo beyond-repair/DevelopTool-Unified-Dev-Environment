@@ -1,3 +1,4 @@
+import os
 from agents.version_control_agent import VersionControlAgent
 from agents.ide_agent import IDEAgent
 from agents.project_management_agent import ProjectManagementAgent
