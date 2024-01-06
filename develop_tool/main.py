@@ -39,9 +39,9 @@ if __name__ == "__main__":
     # Provide actual values for repository path and GitHub details
     repo_path = "/path/to/your/repository"
     github_details = {
-        'repo_owner': "correct_repo_owner",
-        'repo_name': "correct_repo_name",
-        'token': "correct_github_token"
+        'repo_owner': "your_username",
+        'repo_name': "your_repository",
+        'token': "your_github_token"
     }
 
     # Create DevelopTool instance and execute the mission
