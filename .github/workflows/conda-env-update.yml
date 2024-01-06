@@ -4,12 +4,9 @@ on:
   push:
     branches:
       - main
-  pull_request:
-    branches:
-      - main
 
 jobs:
-  update_environment:
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -24,10 +21,36 @@ jobs:
       - name: Install Miniconda
         uses: conda-inc/setup-miniconda@v2
 
-      - name: Update Conda Environment
-        uses: conda-inc/conda-env-update-action@v1
-        with:
-          environment-file: DevelopTool-Unified-Dev-Environment/environment.yml
+      - name: Install Conda
+        run: |
+          wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh
+          bash miniconda.sh -b -p $HOME/miniconda
+          echo 'export PATH="$HOME/miniconda/bin:$PATH"' >> $HOME/.bashrc
+          source $HOME/.bashrc
+          conda config --set always_yes yes --set changeps1 no
+          conda update -q conda
+
+      - name: Create Conda environment
+        run: |
+          conda env create --file DevelopTool-Unified-Dev-Environment/environment.yml --name base
+
+      - name: Activate Conda environment
+        run: conda activate base
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run tests
+        run: pytest
+
+      - name: Generate coverage report
+        run: coverage report
+
+      - name: Run pylint
+        run: pylint .
+
+      - name: Clean up
+        run: conda deactivate
           environment-name: base
 
       - name: Commit and Push Environment File
