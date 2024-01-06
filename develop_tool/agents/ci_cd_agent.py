@@ -1,6 +1,6 @@
 class CI_CD_Agent:
     def setup_ci_cd_pipeline(self):
-        from file_manager import file_manager
+        from file_manager.file_manager import FileManager
         import sys
         self.environment_path = "DevelopTool-Unified-Dev-Environment/environment.yml"
         
