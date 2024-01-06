@@ -1,3 +1,7 @@
+from develop_tool.agents.file_manager import copy_environment_file
+from develop_tool.agents import file_manager
+import os
+
 class CI_CD_Agent:
     def setup_ci_cd_pipeline(self, file_manager):
         
@@ -8,8 +12,7 @@ class CI_CD_Agent:
         file_manager_instance.copy_file(self.environment_path, self.repository_path)
         self.environment_path = "DevelopTool-Unified-Dev-Environment/environment.yml"
         
-        file_manager_instance.copy_file(self.environment_path, self.repository_path)
-        file_manager_instance.update_environment()
+        file_manager.copy_environment_file(self.environment_path, self.repository_path)
 
     def update_environment(self):
         import os
