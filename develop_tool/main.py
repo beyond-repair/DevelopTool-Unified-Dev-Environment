@@ -1,9 +1,9 @@
-from agents.version_control_agent import VersionControlAgent
-from agents.ide_agent import IDEAgent
-from agents.project_management_agent import ProjectManagementAgent
-from agents.ci_cd_agent import CI_CD_Agent
-from agents.testing_agent import TestingAgent
-from agents.communication_agent import CommunicationAgent
+from develop_tool.agents.version_control_agent import VersionControlAgent
+from develop_tool.agents.ide_agent import IDEAgent
+from develop_tool.agents.project_management_agent import ProjectManagementAgent
+from develop_tool.agents.ci_cd_agent import CI_CD_Agent
+from develop_tool.agents.testing_agent import TestingAgent
+from develop_tool.agents.communication_agent import CommunicationAgent
 
 class DevelopTool:
     def __init__(self, repo_path, github_details):
