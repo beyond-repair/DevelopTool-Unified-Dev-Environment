@@ -1,0 +1,54 @@
+name: Setup
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Set up environment
+        uses: actions/checkout@v2
+            - name: Install dependencies
+        run: |
+          conda env update --file DevelopTool-Unified-Dev-Environment/environment.yml --name base
+      - name: Run tests
+        run: pytest
+      - name: Code coverage
+        run: coverage run -m pytest
+        env:
+          CI: true
+      - name: Lint code
+        run: pylint DevelopTool-Unified-Dev-Environment
+      - name: Publish coverage report
+        uses: codecov/codecov-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+      - name: Cache dependencies
+        uses: actions/cache@v2
+        with:
+          path: ~/.conda
+          key: ${{ runner.os }}-conda-${{ hashFiles('environment.yml') }}
+          restore-keys: ${{ runner.os }}-conda-
+      - name: Locate environment.yml
+        uses: actions/github-script@v3
+        with:
+          script: |
+            const path = require('path');
+            const environmentYmlPath = path.join(process.env.GITHUB_WORKSPACE, 'DevelopTool-Unified-Dev-Environment', 'environment.yml');
+            console.log(`::set-output name=environment_yml_path::${environmentYmlPath}`);
+      - name: Check out repository again
+        uses: actions/checkout@v2
+      - name: Update environment
+        run: |
+
