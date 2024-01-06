@@ -1,0 +1,37 @@
+name: Setup
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Set up environment
+        uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+      - name: Cache dependencies
+        uses: actions/cache@v2
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+      - name: Locate environment.yml
+        uses: actions/github-script@v3
+        with:
+          script: |
+            const path = require('path');
+            const environmentYmlPath = path.join(process.env.GITHUB_WORKSPACE, 'DevelopTool-Unified-Dev-Environment', 'environment.yml');
+            console.log(`::set-output name=environment_yml_path::${environmentYmlPath}`);
+      - name: Check out repository again
+        uses: actions/checkout@v2
+      - name: Update environment
+        run: |
+          conda env update --file ${{ steps.locate.outputs.environment_yml_path }} --name base
