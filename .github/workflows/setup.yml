@@ -12,7 +12,7 @@ jobs:
     steps:
       - name: Set up environment
         uses: actions/checkout@v2
-            - name: Set up Miniconda
+      - name: Set up Miniconda
         uses: conda-incubator/setup-miniconda@v2
       - name: Activate conda environment
         uses: conda-incubator/setup-conda@v2
@@ -22,9 +22,8 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: 3.8
-        uses: actions/setup-python@v2
-        with:
-          python-version: 3.8
+                   -with:
+      - python-version: 3.8
       - name: Cache dependencies
         uses: actions/cache@v2
         with:
