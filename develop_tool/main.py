@@ -28,7 +28,6 @@ class DevelopTool:
             'github_details': github_details
         }
         self.mission = "Streamline the software development process."
-
     def execute_mission(self):
         # Execute the mission by interacting with different agents
         self.version_control_agent.initialize_repository()

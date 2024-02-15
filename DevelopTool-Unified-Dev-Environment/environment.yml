@@ -1,6 +1,4 @@
 environment.yml
-# environment.yml
-
 name: base
 channels:
   - defaults
