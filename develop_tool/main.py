@@ -2,8 +2,11 @@ from agents.version_control_agent import VersionControlAgent
 from agents.ide_agent import IDEAgent
 from agents.project_management_agent import ProjectManagementAgent
 from agents.ci_cd_agent import CI_CD_Agent
+from agents.ci_cd_agent import CI_CD_Agent
 from agents.testing_agent import TestingAgent
 from agents.communication_agent import CommunicationAgent
+
+from agents.ci_cd_agent import CI_CD_Agent
 
 class DevelopTool:
     def __init__(self, repo_path, github_details):
@@ -37,7 +40,7 @@ class DevelopTool:
 
 if __name__ == "__main__":
     # Provide actual values for repository path and GitHub details
-    repo_path = "/path/to/your/actual_repository"
+    repo_path = "DevelopTool-Unified-Dev-Environment/environment.yml"
     github_details = {
         'repo_owner': "your_username",
         'repo_name': "your_repository",

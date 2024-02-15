@@ -1,5 +1,17 @@
 environment.yml
-
+name: base
+channels:
+  - defaults
+dependencies:
+  - python=3.8
+  - numpy
+  - pandas
+  - matplotlib
+  - scikit-learn
+  - pytest
+  - coverage
+  - pylint
+  - black
 name: base
 channels:
   - defaults
