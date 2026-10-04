@@ -1,9 +1,9 @@
 <div align="center">
 
 ```
-╔══════════════════════════════════════════════════════════════╗
+╔═════════════════════════════════════════════════════════════╗
 ║   ATOMIC DREAM LABS  ·  BEYOND-REPAIR                        ║
-╚══════════════════════════════════════════════════════════════╝
+╚═════════════════════════════════════════════════════════════╝
 ```
 
 # DevelopTool
@@ -28,6 +28,10 @@ NOT CLAIMED profit · live trading · product
 ## ▌ STATUS
 
 Archive-queue under [ADL-Governance](https://github.com/beyond-repair/ADL-Governance). Do not use for live trading, deployment, or as a product.
+
+Sweep-214 (2026-10-04): classification remains ARCHIVED. GitHub `archived=true` is operator-only and was not set. Surface tests live in `tests/test_surface.py`. See `CLAIM_STATUS.md`.
+
+The historical preserved body below is not current status. In particular, "Resurrection target (spec-first)" is not an ACTIVE promotion.
 
 ---
 
