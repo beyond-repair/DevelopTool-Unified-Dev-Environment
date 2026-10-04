@@ -1,7 +1,7 @@
 name: Conda Environment Update (archived stub)
 
-# Sweep-214: previous file used an invalid action, created env name base,
-# and ended with git push. History is preserved in git. Not run on push.
+# Sweep-214: previous file used an invalid action and created env name base,
+# then attempted a remote write. History is preserved in git. Not run on push.
 on:
   workflow_dispatch:
 
@@ -9,4 +9,4 @@ jobs:
   noop:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "ARCHIVED sketch. No conda update and no git push."
+      - run: echo "ARCHIVED sketch. No conda update and no remote write."
