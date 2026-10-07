@@ -29,7 +29,7 @@ NOT CLAIMED profit · live trading · product
 
 Archive-queue under [ADL-Governance](https://github.com/beyond-repair/ADL-Governance). Do not use for live trading, deployment, or as a product.
 
-Sweep-214 (2026-10-04): classification remains ARCHIVED. GitHub `archived=true` is operator-only and was not set. Surface tests live in `tests/test_surface.py`. See `CLAIM_STATUS.md`.
+Sweep-264 (2026-10-06): random draw `random.Random(1791335011).choice` over the 83-name search payload. Classification remains ARCHIVED. GitHub `archived=true` is operator-only and was not set. Tree at discovery `5a84f447`. Surface tests remain in `tests/test_surface.py`. Prior Surface audit run 37204277991 succeeded on that tree. See `CLAIM_STATUS.md`.
 
 The historical preserved body below is not current status. In particular, "Resurrection target (spec-first)" is not an ACTIVE promotion.
 
